@@ -9,14 +9,12 @@ BMP390::BMP390(SPIClass* spi,const int sdi, const int sdo, const int sck, const 
 void BMP390::begin(){
   // Starting up the SPI bus
   _spi->begin(_sck,_sdo,_sdi);
-  delay(50);
+
+  // Give sensor time to warm up
+  delay(20);
 
   // Disabling FIFO
   write_register(FIFO_CONFIG_1,0);
-  delay(20);
-
-  // Set normal mode
-  write_register(PWR_CTRL,0b00110011);
   delay(20);
 
   // Set oversampling rate to 8x pressure, 1x temperature
@@ -29,6 +27,10 @@ void BMP390::begin(){
 
   // Set IIR coefficient to 1
   write_register(CONFIG,0b00000010);
+  delay(20);
+
+  // Set normal mode
+  write_register(PWR_CTRL,0b00110011);
   delay(20);
 
   // Reading calibration data
