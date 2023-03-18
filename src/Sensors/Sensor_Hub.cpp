@@ -64,12 +64,12 @@ void SensorHub::_update_imu(){
 
   // Sign changes to compensate for orientation of IMU on the PCB
   // Body fixed frame is right, front, up
-  data.accel_x = -imu_data.accX;
-  data.accel_y = -imu_data.accY;
-  data.accel_z = imu_data.accZ;
-  data.w_x = -imu_data.wX;
-  data.w_y = -imu_data.wY;
-  data.w_z = imu_data.wZ;
+  data.accel_x = imu_data.accX;
+  data.accel_y = imu_data.accY;
+  data.accel_z = -imu_data.accZ;
+  data.w_x = imu_data.wX;
+  data.w_y = imu_data.wY;
+  data.w_z = -imu_data.wZ;
 
   data.imu_updated = true;
 }
