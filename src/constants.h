@@ -25,7 +25,7 @@ struct Pins{
 };
 
 // Acceleration due to gravity
-const float g = 9.8;
+constexpr float g = 9.8;
 
 
 #endif
