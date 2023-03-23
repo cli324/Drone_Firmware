@@ -12,6 +12,7 @@ class SimpleRateEstimator{
 
         void begin();
 
+        // Fills estimated_rates with wx, wy, wz filtered via first order LPF
         void update(float estimated_rates[3],float wx_raw, float wy_raw, float wz_raw);
 
     private:
@@ -19,7 +20,7 @@ class SimpleRateEstimator{
         float _cutoff_frequency = 50;  // 50 hz cutoff frequency
         FirstOrderLPF _wx_filter = FirstOrderLPF(_cutoff_frequency);
         FirstOrderLPF _wy_filter = FirstOrderLPF(_cutoff_frequency);
-        FirstOrderLPF _wz_filter = FirstOrderLPF(_cutoff_frequency);
+        FirstOrderLPF _wz_filter = FirstOrderLPF(_cutoff_frequency);        
 };
 
 
