@@ -68,7 +68,7 @@ class LSM6DSOX{
     const int8_t OUTZ_H_G = 0x27;
   
     // Desired output data rate and FIFO settings
-    const int8_t ACCEL_ODR_FS_SETTINGS = 0b10001100;
+    const int8_t ACCEL_ODR_FS_SETTINGS = 0b10001100;  // 8 g full scale at ODR = 1.66 kHz
     const int8_t GYRO_ODR_FS_SETTINGS = 0b10001000;
     const int8_t FIFO_DISABLE = 0;
   
