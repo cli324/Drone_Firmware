@@ -26,8 +26,8 @@ class SimpleHeightEstimator{
         // Kalman filter prediction step
         void _kalman_filter_prediction(BLA::Matrix<2>& mu_bar, BLA::Matrix<2,2>& sigma_bar, float vertical_acceleration, float deltaT);
 
-        BLA::Matrix<2,2> R = {0.1,0,0,0.1};  // Process noise covariance
-        BLA::Matrix<1,1> Q = {0.5};  // Measurement noise covariance
+        BLA::Matrix<2,2> R = {0.01,0,0,0.01};  // Process noise covariance
+        BLA::Matrix<1,1> Q = {5.0f};  // Measurement noise covariance
         BLA::Matrix<1,2> C = {1,0};  // Measurement update matrix
         BLA::Matrix<2> mu_prev = {0,0};  // Previous state prediction. State is defined as [vertical_position, vertical_speed]
         BLA::Matrix<2,2> sigma_prev = {3,0,0,3};  // Initialize covariance matrix with high level of uncertainty
