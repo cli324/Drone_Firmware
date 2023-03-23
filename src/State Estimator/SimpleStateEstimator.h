@@ -17,6 +17,10 @@ struct State{
     float wz;
     float pos_z;
     float vel_z;
+
+    float accel_x;
+    float accel_y;
+    float accel_z;
 };
 
 class SimpleStateEstimator{
@@ -35,13 +39,6 @@ class SimpleStateEstimator{
         SimpleRateEstimator _angular_rate_estimator;
         SimpleAttitudeEstimator _attitude_estimator;
         SimpleHeightEstimator _height_estimator;
-
-        // Acceleration along body-fixed axes
-        // Not part of the system state, but is used to estimate the system state
-        // Right, front, up
-        float _accel_x;
-        float _accel_y;
-        float _accel_z;
 };
 
 
