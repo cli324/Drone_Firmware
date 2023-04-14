@@ -9,19 +9,7 @@
 #include "Orientation/SimpleAttitudeEstimator.h"
 #include "Vertical Position/SimpleHeightEstimator.h"
 
-struct State{
-    float pitch;
-    float roll;
-    float wx;
-    float wy;
-    float wz;
-    float pos_z;
-    float vel_z;
-
-    float accel_x;
-    float accel_y;
-    float accel_z;
-};
+#include "State.h"
 
 class SimpleStateEstimator{
     public:
