@@ -9,6 +9,11 @@ void FirstOrderLPF::begin(){
     _timer = 0;
 }
 
+void FirstOrderLPF::reset(){
+    _timer = 0;
+    _initial_value_received = false;
+}
+
 float FirstOrderLPF::filter(float value){
     if(_initial_value_received){
         float delta_T = (float)_timer / 1000000.0f;  // Time since last filtering in seconds
