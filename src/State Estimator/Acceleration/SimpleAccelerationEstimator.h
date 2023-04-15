@@ -15,8 +15,8 @@ class SimpleAccelerationEstimator{
         void update(float estimated_acceleration[3],float accel_x, float accel_y, float accel_z);
     
     private:
-        float _cutoff_frequency = 50;
-        FirstOrderLPF _accel_x_filter = FirstOrderLPF(_cutoff_frequency);  // 50 hz cutoff frequency low pass filter
+        float _cutoff_frequency = 30;
+        FirstOrderLPF _accel_x_filter = FirstOrderLPF(_cutoff_frequency);  // 30 hz cutoff frequency low pass filter
         FirstOrderLPF _accel_y_filter = FirstOrderLPF(_cutoff_frequency);
         FirstOrderLPF _accel_z_filter = FirstOrderLPF(_cutoff_frequency);
 

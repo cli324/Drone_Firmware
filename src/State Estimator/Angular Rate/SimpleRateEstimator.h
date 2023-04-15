@@ -17,7 +17,7 @@ class SimpleRateEstimator{
 
     private:
         static constexpr IMUBiases _biases = IMUBiases();
-        float _cutoff_frequency = 50;  // 50 hz cutoff frequency
+        float _cutoff_frequency = 30;  // 30 hz cutoff frequency
         FirstOrderLPF _wx_filter = FirstOrderLPF(_cutoff_frequency);
         FirstOrderLPF _wy_filter = FirstOrderLPF(_cutoff_frequency);
         FirstOrderLPF _wz_filter = FirstOrderLPF(_cutoff_frequency);        
