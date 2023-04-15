@@ -3,7 +3,6 @@
 
 #include <BluetoothSerial.h>
 #include "elapsedMillis.h"
-#include "Arduino.h"
 
 enum class MessageTypes{
     heartbeat,
