@@ -2,7 +2,7 @@
 #define SIMPLE_RATE_ESTIMATOR
 
 #include "../IMU Biases/FixedImuBiases.h"
-#include "../utils/Low Pass Filters/FirstOrderLPF.h"
+#include "../../utils/Low Pass Filters/FirstOrderLPF.h"
 
 // Applies bias subtraction + low pass filtering to raw gyro data
 class SimpleRateEstimator{

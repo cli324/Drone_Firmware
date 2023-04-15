@@ -2,7 +2,7 @@
 #define SIMPLE_ACCELERATION_ESTIMATOR
 
 #include "../IMU Biases/FixedIMUBiases.h"
-#include "../utils/Low Pass Filters/FirstOrderLPF.h"
+#include "../../utils/Low Pass Filters/FirstOrderLPF.h"
 
 // Subtracts IMU biases and applies low pass filtering to raw accelerometer data
 class SimpleAccelerationEstimator{
