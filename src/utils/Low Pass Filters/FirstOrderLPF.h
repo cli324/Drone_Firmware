@@ -6,7 +6,7 @@
 // First order low pass filter
 class FirstOrderLPF{
     public:
-        FirstOrderLPF(float cutoff_frequency_hz=30);
+        FirstOrderLPF(float cutoff_frequency_hz);
         FirstOrderLPF(float cutoff_frequency_hz,float initial_value);
 
         void begin();
