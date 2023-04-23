@@ -42,8 +42,8 @@ void Controls::update(bool system_armed, const State& state){
         _attitude_controller_update_timer -= _ATTITUDE_CONTROLLER_UPDATE_PERIOD_US;
         float roll_pitch_rate_setpoints[2];
         _attitude_controller.update(roll_pitch_rate_setpoints,_attitude_setpoints,state);
-        _rate_setpoints[0] = roll_pitch_rate_setpoints[0];
-        _rate_setpoints[1] = roll_pitch_rate_setpoints[1];
+        _rate_setpoints[0] = roll_pitch_rate_setpoints[0];  // Roll rate
+        _rate_setpoints[1] = roll_pitch_rate_setpoints[1];  // Pitch rate
     }
 
     if(_rate_controller_update_timer >= _RATE_CONTROLLER_UPDATE_PERIOD_US){
@@ -58,17 +58,18 @@ void Controls::update(bool system_armed, const State& state){
         controller_setpoints[2] = angular_accels[2];
         controller_setpoints[3] = _acceleration_setpoint;
 
-        _control_allocator.compute_motor_setpoints(_motor_setpoints,controller_setpoints);
+        _control_allocator.compute_motor_setpoints(_motor_setpoints,controller_setpoints,state);
         _new_motor_setpoint_available = true;
     }
+
 }
 
 
 void Controls::update_joystick_signals(bool system_armed, float joystick_commands[4]){
     if(system_armed){
         float thrust_command = _adjust_for_deadband(joystick_commands[0]);
-        float yaw_command = _adjust_for_deadband(joystick_commands[1]);
-        float pitch_command = _adjust_for_deadband(joystick_commands[2]);
+        float yaw_command = _adjust_for_deadband(-joystick_commands[1]);  // Negative is so that "right" on the joystick corresponds to negative yaw
+        float pitch_command = _adjust_for_deadband(-joystick_commands[2]);  // The negative is so that "forward" on the joystick corresponds to negative pitch
         float roll_command = _adjust_for_deadband(joystick_commands[3]);
 
         _rate_setpoints[2] = yaw_command * _max_yaw_rate;

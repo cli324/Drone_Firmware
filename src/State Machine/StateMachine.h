@@ -37,9 +37,9 @@ class StateMachine{
 
         // Constants for calculating % battery remaining
         const float _MAX_BATTERY_VOLTAGE = 4.35;  // 1s LiHV battery
-        const float _MIN_BATTERY_VOLTAGE = 3.5;
+        const float _MIN_BATTERY_VOLTAGE = 3.2;
         uint8_t _battery_percent_remaining = 0;
-        const uint8_t _LOW_BATTERY_LEVEL = 10;
+        const uint8_t _LOW_BATTERY_LEVEL = 20;
         const uint8_t _OUT_OF_BATTERY_LEVEL = 0;
 
         // Constants for determining whether or not a crash has occurred

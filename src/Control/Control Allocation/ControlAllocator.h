@@ -20,12 +20,18 @@ class ControlAllocator{
         motor_setpoints is filled with the front_left, front_right, back_right, and back_left motor setpoints, in that order
         controller_outputs should contain the roll, pitch, and yaw rate controller setpoints as well as the vertical acceleration setpoint
         */
-        void compute_motor_setpoints(float motor_setpoints[4], float controller_outputs[4]);
+        void compute_motor_setpoints(float motor_setpoints[4], float controller_outputs[4], const State& state);
 
 
     private:
         // -----------------------------------System-specific parameters----------------------------------------
         const float _MIN_ALLOWED_MOTOR_SETPOINT = 0.03;
+
+        // Converts a vertical acceleration command to a thrust command, compensating for the attitude of the aircraft
+        // If the pitch or roll of the aircraft are greater than _MAX_TILT_COMPENSATION, then (+/-) _MAX_TILT_COMPENSATION is used instead
+        // This is to guard against the case when a vertical acceleration command is unachievable due to the orientation of the aircraft
+        float _vertical_acceleration_to_thrust(float accel, const State& state);
+        const float _MAX_TILT_COMPENSATION = 60.0 * PI / 180.0;
 
         /* 
         Matrix which relates angular rates and thrust to motor force commands
@@ -34,10 +40,10 @@ class ControlAllocator{
         */
 
        BLA::Matrix<4,4> _control_allocation_matrix = {
-        0.0008    ,  0.00089333,  0.00010785,  0.03666667,
-        0.0008    , -0.00089333, -0.00010785,  0.03666667,
-        -0.0008    , -0.00089333,  0.00010785,  0.03666667,
-        -0.0008    ,  0.00089333, -0.00010785,  0.03666667
+        8.00000000E-04,  8.93333333E-04,  5.39266667E-03, 1.66666667E+00,
+        8.00000000E-04, -8.93333333E-04, -5.39266667E-03, 1.66666667E+00,
+        -8.00000000E-04, -8.93333333E-04,  5.39266667E-03, 1.66666667E+00,
+       -8.00000000E-04,  8.93333333E-04, -5.39266667E-03, 1.66666667E+00
        };
 };
 

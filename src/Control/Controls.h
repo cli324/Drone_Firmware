@@ -32,23 +32,23 @@ class Controls{
     private:
         // -----Control gains-----
         // Rate controller
-        const float _roll_pitch_rate_kp = 0;
-        const float _roll_pitch_rate_ki = 0;
-        const float _roll_pitch_rate_kd = 0;
-        const float _yaw_rate_kp = 0;
-        const float _yaw_rate_ki = 0;
+        const float _roll_pitch_rate_kp = 20;
+        const float _roll_pitch_rate_ki = 0.1;
+        const float _roll_pitch_rate_kd = 0.0;
+        const float _yaw_rate_kp = 20;
+        const float _yaw_rate_ki = 0.5;
         const float _yaw_rate_kd = 0;
 
         // Attitude controller
-        const float _attitude_kp = 0;
+        const float _attitude_kp = 8;
 
         // Velocity controller
-        const float _velocity_kp = 0;
-        const float _velocity_ki = 0;
-        const float _velocity_kd = 0;
+        const float _velocity_kp = 15;
+        const float _velocity_ki = 0.01;
+        const float _velocity_kd = 0.001;
 
         // Position Controller
-        const float _position_kp = 0;
+        const float _position_kp = 1;
 
         // -----Controllers------
         ControlAllocator _control_allocator;

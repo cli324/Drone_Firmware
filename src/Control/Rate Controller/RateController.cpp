@@ -13,9 +13,10 @@ void RateController::begin(){
 }
 
 void RateController::update(float outputs[3], float refs[3], const State& state){
-    outputs[0] = _roll_rate_controller.update(refs[0], state.wy);
-    outputs[1] = _pitch_rate_controller.update(refs[1], state.wx);
-    outputs[2] = _yaw_rate_controller.update(refs[2], state.wz);
+    float roll_rate = refs[0]; float pitch_rate = refs[1]; float yaw_rate = refs[2];
+    outputs[0] = _roll_rate_controller.update(roll_rate, state.wy);
+    outputs[1] = _pitch_rate_controller.update(pitch_rate, state.wx);
+    outputs[2] = _yaw_rate_controller.update(yaw_rate, state.wz);
 }
 
 void RateController::reset(){

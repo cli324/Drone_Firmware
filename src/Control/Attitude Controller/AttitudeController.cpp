@@ -10,8 +10,9 @@ void AttitudeController::begin(){
 }
 
 void AttitudeController::update(float output[2], float refs[2], const State& state){
-    output[0] = _roll_controller.update(refs[0], state.roll);
-    output[1] = _pitch_controller.update(refs[1], state.pitch);
+    float roll = refs[0]; float pitch = refs[1];
+    output[0] = _roll_controller.update(roll, state.roll);
+    output[1] = _pitch_controller.update(pitch, state.pitch);
 }
 
 void AttitudeController::reset(){

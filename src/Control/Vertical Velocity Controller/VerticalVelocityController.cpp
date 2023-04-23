@@ -1,7 +1,7 @@
 #include "VerticalVelocityController.h"
 
 VerticalVelocityController::VerticalVelocityController(float kp, float ki, float kd) :
-    _vertical_velocity_controller(kp, ki, kd){}
+    _vertical_velocity_controller(kp, ki, kd, _derivative_lpf_cutoff){}
 
 void VerticalVelocityController::begin(){
     _vertical_velocity_controller.begin();

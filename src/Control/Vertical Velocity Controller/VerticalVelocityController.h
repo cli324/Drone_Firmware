@@ -18,6 +18,7 @@ class VerticalVelocityController{
     
     private:
         PIDController _vertical_velocity_controller;
+        const float _derivative_lpf_cutoff = 30;
         
 };
 
