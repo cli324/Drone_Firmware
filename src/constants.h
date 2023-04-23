@@ -27,5 +27,8 @@ struct Pins{
 // Acceleration due to gravity
 constexpr float g = 9.8;
 
+// Mass of the drone in kg
+constexpr float m = 0.029;
+
 
 #endif
