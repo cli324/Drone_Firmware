@@ -36,7 +36,7 @@ class Controls{
         const float _roll_pitch_rate_ki = 0.1;
         const float _roll_pitch_rate_kd = 0.0;
         const float _yaw_rate_kp = 20;
-        const float _yaw_rate_ki = 0.5;
+        const float _yaw_rate_ki = 2;
         const float _yaw_rate_kd = 0;
 
         // Attitude controller
